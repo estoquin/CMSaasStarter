@@ -9,7 +9,7 @@
   let { supabase } = data
 
   onMount(() => {
-    supabase.auth.onAuthStateChange((event) => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
       // Redirect to account after successful login
       if (event == "SIGNED_IN") {
         // Delay needed because order of callback not guaranteed.
@@ -20,6 +20,8 @@
         }, 1)
       }
     })
+
+    return () => data.subscription.unsubscribe()
   })
 </script>
 
