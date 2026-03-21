@@ -4,7 +4,7 @@
 
   let { data } = $props()
 
-  let { supabase } = data
+  let supabase = $derived(data.supabase)
   let message = $state("Signing out....")
 
   // on mount, sign out
