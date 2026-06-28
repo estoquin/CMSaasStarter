@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-  <title>Select a Plan</title>
+  <title>Seleccionar un Plan</title>
 </svelte:head>
 
 <div
@@ -11,12 +11,12 @@
 >
   <div class="flex flex-col w-full px-6">
     <div>
-      <h1 class="text-2xl font-bold mb-2">Select a Plan</h1>
+      <h1 class="text-2xl font-bold mb-2">Seleccionar un Plan</h1>
       <div class="mb-6">
-        View our <a href="/pricing" target="_blank" class="link">pricing page</a
-        > for details.
+        Visita nuestra <a href="/pricing" target="_blank" class="link">página de precios</a
+        > para más detalles.
       </div>
-      <PricingModule callToAction="Select Plan" />
+      <PricingModule callToAction="Seleccionar Plan" />
     </div>
   </div>
 </div>

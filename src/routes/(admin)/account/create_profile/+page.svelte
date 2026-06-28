@@ -44,7 +44,7 @@
 </script>
 
 <svelte:head>
-  <title>Create Profile</title>
+  <title>Crear Perfil</title>
 </svelte:head>
 
 <div
@@ -52,7 +52,7 @@
 >
   <div class="flex flex-col w-64 lg:w-80">
     <div>
-      <h1 class="text-2xl font-bold mb-6">Create Profile</h1>
+      <h1 class="text-2xl font-bold mb-6">Crear Perfil</h1>
       <form
         class="form-widget"
         method="POST"
@@ -61,13 +61,13 @@
       >
         <div class="mt-4">
           <label for="fullName">
-            <span class="text-l text-center">Your Name</span>
+            <span class="text-l text-center">Tu Nombre</span>
           </label>
           <input
             id="fullName"
             name="fullName"
             type="text"
-            placeholder="Your full name"
+            placeholder="Tu nombre completo"
             class="{fieldError(form, 'fullName')
               ? 'input-error'
               : ''} mt-1 input input-bordered w-full max-w-xs"
@@ -78,13 +78,13 @@
 
         <div class="mt-4">
           <label for="companyName">
-            <span class="text-l text-center">Company Name</span>
+            <span class="text-l text-center">Nombre de la Empresa</span>
           </label>
           <input
             id="companyName"
             name="companyName"
             type="text"
-            placeholder="Company name"
+            placeholder="Nombre de la empresa"
             class="{fieldError(form, 'companyName')
               ? 'input-error'
               : ''} mt-1 input input-bordered w-full max-w-xs"
@@ -95,13 +95,13 @@
 
         <div class="mt-4">
           <label for="website">
-            <span class="text-l text-center">Company Website</span>
+            <span class="text-l text-center">Sitio Web</span>
           </label>
           <input
             id="website"
             name="website"
             type="text"
-            placeholder="Company website"
+            placeholder="Sitio web de la empresa"
             class="{fieldError(form, 'website')
               ? 'input-error'
               : ''} mt-1 input input-bordered w-full max-w-xs"
@@ -119,16 +119,16 @@
           <input
             type="submit"
             class="btn btn-primary mt-3 btn-wide"
-            value={loading ? "..." : "Create Profile"}
+            value={loading ? "..." : "Crear Perfil"}
             disabled={loading}
           />
         </div>
       </form>
 
       <div class="text-sm text-slate-800 mt-14">
-        You are logged in as {user?.email}.
+        Has iniciado sesión como {user?.email}.
         <br />
-        <a class="underline" href="/account/sign_out"> Sign out </a>
+        <a class="underline" href="/account/sign_out"> Cerrar Sesión </a>
       </div>
     </div>
   </div>

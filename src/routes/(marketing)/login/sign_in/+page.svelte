@@ -26,7 +26,7 @@
 </script>
 
 <svelte:head>
-  <title>Sign in</title>
+  <title>Iniciar Sesión</title>
 </svelte:head>
 
 {#if $page.url.searchParams.get("verified") == "true"}
@@ -43,10 +43,10 @@
         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
       /></svg
     >
-    <span>Email verified! Please sign in.</span>
+    <span>¡Correo verificado! Por favor inicia sesión.</span>
   </div>
 {/if}
-<h1 class="text-2xl font-bold mb-6">Sign In</h1>
+<h1 class="text-2xl font-bold mb-6">Iniciar Sesión</h1>
 <Auth
   supabaseClient={data.supabase}
   view="sign_in"
@@ -58,8 +58,8 @@
   additionalData={undefined}
 />
 <div class="text-l text-slate-800 mt-4">
-  <a class="underline" href="/login/forgot_password">Forgot password?</a>
+  <a class="underline" href="/login/forgot_password">¿Olvidaste tu contraseña?</a>
 </div>
 <div class="text-l text-slate-800 mt-3">
-  Don't have an account? <a class="underline" href="/login/sign_up">Sign up</a>.
+  ¿No tienes una cuenta? <a class="underline" href="/login/sign_up">Regístrate</a>.
 </div>

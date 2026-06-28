@@ -2,6 +2,7 @@
 import { redirect } from "@sveltejs/kit"
 import { isAuthApiError } from "@supabase/supabase-js"
 
+/** @type {import('./$types').RequestHandler} */
 export const GET = async ({ url, locals: { supabase } }) => {
   const code = url.searchParams.get("code")
   if (code) {

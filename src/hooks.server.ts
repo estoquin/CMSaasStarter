@@ -62,7 +62,7 @@ export const supabase: Handle = async ({ event, resolve }) => {
       data: { session },
     } = await event.locals.supabase.auth.getSession()
     if (!session) {
-      return { session: null, user: null, amr: null }
+      return { session: null, user: null, amr: null, organization_id: null, role: null }
     }
 
     const {
@@ -71,21 +71,42 @@ export const supabase: Handle = async ({ event, resolve }) => {
     } = await event.locals.supabase.auth.getUser()
     if (userError) {
       // JWT validation has failed
-      return { session: null, user: null, amr: null }
+      return { session: null, user: null, amr: null, organization_id: null, role: null }
     }
 
     const { data: aal, error: amrError } =
       await event.locals.supabase.auth.mfa.getAuthenticatorAssuranceLevel()
     if (amrError) {
-      return { session, user, amr: null }
+      return { session, user, amr: null, organization_id: null, role: null }
+    }
+
+        // Look up org membership
+    let organization_id: string | null = null
+    let role: string | null = null
+    if (user) {
+      const { data: membership } = await event.locals.supabaseServiceRole
+        .from("organization_members")
+        .select("organization_id, role")
+        .eq("user_id", user.id)
+        .maybeSingle()
+      if (membership) {
+        organization_id = membership.organization_id
+        role = membership.role
+      }
     }
 
     return {
       session,
       user,
       amr: aal.currentAuthenticationMethods as AMREntry[],
+      organization_id,
+      role,
     }
   }
+
+
+  event.locals.organization_id = null
+  event.locals.role = null
 
   return resolve(event, {
     filterSerializedResponseHeaders(name) {
@@ -97,9 +118,11 @@ export const supabase: Handle = async ({ event, resolve }) => {
 // Not called for prerendered marketing pages so generally okay to call on ever server request
 // Next-page CSR will mean relatively minimal calls to this hook
 const authGuard: Handle = async ({ event, resolve }) => {
-  const { session, user } = await event.locals.safeGetSession()
+  const { session, user, organization_id, role } = await event.locals.safeGetSession()
   event.locals.session = session
   event.locals.user = user
+  event.locals.organization_id = organization_id
+  event.locals.role = role
 
   return resolve(event)
 }

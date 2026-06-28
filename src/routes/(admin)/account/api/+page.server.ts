@@ -1,8 +1,9 @@
 import { fail, redirect } from "@sveltejs/kit"
 import { sendAdminEmail, sendUserEmail } from "$lib/mailer"
 import { WebsiteBaseUrl } from "../../../../config"
+import type { Actions } from "./$types"
 
-export const actions = {
+export const actions: Actions = {
   toggleEmailSubscription: async ({ locals: { supabase, safeGetSession } }) => {
     const { session } = await safeGetSession()
 
@@ -25,7 +26,7 @@ export const actions = {
 
     if (error) {
       console.error("Error updating subscription status", error)
-      return fail(500, { message: "Failed to update subscription status" })
+      return fail(500, { message: "Error al actualizar el estado de la suscripción" })
     }
 
     return {
@@ -43,13 +44,13 @@ export const actions = {
 
     let validationError
     if (!email || email === "") {
-      validationError = "An email address is required"
+      validationError = "Se requiere una dirección de correo electrónico"
     }
     // Dead simple check -- there's no standard here (which is followed),
     // and lots of errors will be missed until we actually email to verify, so
     // just do that
     else if (!email.includes("@")) {
-      validationError = "A valid email address is required"
+      validationError = "Se requiere una dirección de correo electrónico válida"
     }
     if (validationError) {
       return fail(400, {
@@ -66,7 +67,7 @@ export const actions = {
     if (error) {
       console.error("Error updating email", error)
       return fail(500, {
-        errorMessage: "Unknown error. If this persists please contact us.",
+        errorMessage: "Error desconocido. Si el problema persiste, contáctanos.",
         email,
       })
     }
@@ -88,7 +89,7 @@ export const actions = {
 
     // Can check if we're a "password recovery" session by checking session amr
     // let currentPassword take priority if provided (user can use either form)
-    const recoveryAmr = amr?.find((x) => x.method === "recovery")
+    const recoveryAmr = amr?.find((x: { method: string }) => x.method === "recovery")
     const isRecoverySession = recoveryAmr && !currentPassword
 
     // if this is password recovery session, check timestamp of recovery session
@@ -98,7 +99,7 @@ export const actions = {
         // 15 mins in milliseconds
         return fail(400, {
           errorMessage:
-            'Recovery code expired. Please log out, then use "Forgot Password" on the sign in page to reset your password. Codes are valid for 15 minutes.',
+            'El código de recuperación expiró. Por favor cierra sesión y usa "Olvidé mi Contraseña" en la página de inicio para restablecer tu contraseña. Los códigos son válidos por 15 minutos.',
           errorFields: [],
           newPassword1,
           newPassword2,
@@ -110,29 +111,29 @@ export const actions = {
     let validationError
     const errorFields = []
     if (!newPassword1) {
-      validationError = "You must type a new password"
+      validationError = "Debes escribir una nueva contraseña"
       errorFields.push("newPassword1")
     }
     if (!newPassword2) {
-      validationError = "You must type the new password twice"
+      validationError = "Debes escribir la nueva contraseña dos veces"
       errorFields.push("newPassword2")
     }
     if (newPassword1.length < 6) {
-      validationError = "The new password must be at least 6 charaters long"
+      validationError = "La nueva contraseña debe tener al menos 6 caracteres"
       errorFields.push("newPassword1")
     }
     if (newPassword1.length > 72) {
-      validationError = "The new password can be at most 72 charaters long"
+      validationError = "La nueva contraseña puede tener máximo 72 caracteres"
       errorFields.push("newPassword1")
     }
     if (newPassword1 != newPassword2) {
-      validationError = "The passwords don't match"
+      validationError = "Las contraseñas no coinciden"
       errorFields.push("newPassword1")
       errorFields.push("newPassword2")
     }
     if (!currentPassword && !isRecoverySession) {
       validationError =
-        "You must include your current password. If you forgot it, sign out then use 'forgot password' on the sign in page."
+        "Debes incluir tu contraseña actual. Si la olvidaste, cierra sesión y usa 'olvidé mi contraseña' en la página de inicio."
       errorFields.push("currentPassword")
     }
     if (validationError) {
@@ -165,7 +166,7 @@ export const actions = {
     if (error) {
       console.error("Error updating password", error)
       return fail(500, {
-        errorMessage: "Unknown error. If this persists please contact us.",
+        errorMessage: "Error desconocido. Si el problema persiste, contáctanos.",
         newPassword1,
         newPassword2,
         currentPassword,
@@ -193,7 +194,7 @@ export const actions = {
     if (!currentPassword) {
       return fail(400, {
         errorMessage:
-          "You must provide your current password to delete your account. If you forgot it, sign out then use 'forgot password' on the sign in page.",
+          "Debes proporcionar tu contraseña actual para eliminar tu cuenta. Si la olvidaste, cierra sesión y usa 'olvidé mi contraseña' en la página de inicio.",
         errorFields: ["currentPassword"],
         currentPassword,
       })
@@ -216,7 +217,7 @@ export const actions = {
     if (error) {
       console.error("Error deleting user", error)
       return fail(500, {
-        errorMessage: "Unknown error. If this persists please contact us.",
+        errorMessage: "Error desconocido. Si el problema persiste, contáctanos.",
         currentPassword,
       })
     }
@@ -239,26 +240,26 @@ export const actions = {
     const fieldMaxTextLength = 50
     const errorFields = []
     if (!fullName) {
-      validationError = "Name is required"
+      validationError = "El nombre es obligatorio"
       errorFields.push("fullName")
     } else if (fullName.length > fieldMaxTextLength) {
-      validationError = `Name must be less than ${fieldMaxTextLength} characters`
+      validationError = `El nombre debe tener menos de ${fieldMaxTextLength} caracteres`
       errorFields.push("fullName")
     }
     if (!companyName) {
       validationError =
-        "Company name is required. If this is a hobby project or personal app, please put your name."
+        "El nombre de la empresa es obligatorio. Si es un proyecto personal, por favor pon tu nombre."
       errorFields.push("companyName")
     } else if (companyName.length > fieldMaxTextLength) {
-      validationError = `Company name must be less than ${fieldMaxTextLength} characters`
+      validationError = `El nombre de la empresa debe tener menos de ${fieldMaxTextLength} caracteres`
       errorFields.push("companyName")
     }
     if (!website) {
       validationError =
-        "Company website is required. An app store URL is a good alternative if you don't have a website."
+        "El sitio web de la empresa es obligatorio. Una URL de tienda de aplicaciones es una buena alternativa si no tienes sitio web."
       errorFields.push("website")
     } else if (website.length > fieldMaxTextLength) {
-      validationError = `Company website must be less than ${fieldMaxTextLength} characters`
+      validationError = `El sitio web debe tener menos de ${fieldMaxTextLength} caracteres`
       errorFields.push("website")
     }
     if (validationError) {
@@ -293,7 +294,7 @@ export const actions = {
     if (error) {
       console.error("Error updating profile", error)
       return fail(500, {
-        errorMessage: "Unknown error. If this persists please contact us.",
+        errorMessage: "Error desconocido. Si el problema persiste, contáctanos.",
         fullName,
         companyName,
         website,
@@ -305,14 +306,14 @@ export const actions = {
       priorProfile?.updated_at === null && priorProfileError === null
     if (newProfile) {
       await sendAdminEmail({
-        subject: "Profile Created",
-        body: `Profile created by ${session.user.email}\nFull name: ${fullName}\nCompany name: ${companyName}\nWebsite: ${website}`,
+        subject: "Perfil Creado",
+        body: `Perfil creado por ${session.user.email}\nNombre completo: ${fullName}\nEmpresa: ${companyName}\nSitio web: ${website}`,
       })
 
       // Send welcome email
       await sendUserEmail({
         user: session.user,
-        subject: "Welcome!",
+        subject: "¡Bienvenido!",
         from_email: "no-reply@saasstarter.work",
         template_name: "welcome_email",
         template_properties: {

@@ -1,31 +1,30 @@
 <script lang="ts">
+  import { page } from "$app/stores"
   import { WebsiteName } from "./../../config"
   import "../../app.css"
 
   interface Props {
     children?: import("svelte").Snippet
+    data?: { session: unknown }
   }
 
-  let { children }: Props = $props()
+  let { children, data }: Props = $props()
+  let loggedIn = $derived(!!data?.session)
+  let isLogin = $derived($page.url.pathname.startsWith("/login"))
 </script>
 
+{#if !isLogin}
 <div class="navbar bg-base-100 container mx-auto">
   <div class="flex-1">
     <a class="btn btn-ghost normal-case text-xl" href="/">{WebsiteName}</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1 hidden sm:flex font-bold text-lg">
-      <li class="md:mx-4">
-        <a
-          href="https://github.com/CriticalMoments/CMSaasStarter"
-          class="border border-primary">★ us on Github</a
-        >
-      </li>
-      <li class="md:mx-2"><a href="/blog">Blog</a></li>
-      <li class="md:mx-2"><a href="/pricing">Pricing</a></li>
-      <li class="md:mx-2"><a href="/account">Account</a></li>
+      <li class="mx-1.5"><a href="/blog" class="btn btn-outline">Blog</a></li>
+      <li class="mx-1.5"><a href="/pricing" class="btn btn-outline">Precios</a></li>
+      <li class="mx-1.5"><a href="/account" class="btn btn-outline">{loggedIn ? "Panel Principal" : "Cuenta"}</a></li>
       <li class="md:mx-0">
-        <a href="/search" aria-label="Search">
+        <a href="/search" aria-label="Buscar">
           <svg
             fill="#000000"
             class="w-6 h-6"
@@ -63,24 +62,20 @@
         class="menu menu-lg dropdown-content mt-3 z-1 p-2 shadow-sm bg-base-100 rounded-box w-52 font-bold"
       >
         <li><a href="/blog">Blog</a></li>
-        <li><a href="/pricing">Pricing</a></li>
-        <li><a href="/account">Account</a></li>
-        <li><a href="/search">Search</a></li>
-        <li>
-          <a
-            href="https://github.com/CriticalMoments/CMSaasStarter"
-            class="border border-primary">★ us on Github</a
-          >
-        </li>
+        <li><a href="/pricing">Precios</a></li>
+        <li><a href="/account">Cuenta</a></li>
+        <li><a href="/search">Buscar</a></li>
       </ul>
     </div>
   </div>
 </div>
+{/if}
 
 <div class="">
   {@render children?.()}
 </div>
 
+{#if !isLogin}
 <!-- Spacer grows so the footer can be at bottom on short pages -->
 <div class="grow"></div>
 <div class="">
@@ -89,27 +84,28 @@
     class="footer md:footer-horizontal p-10 gap-x-48 lg:gap-x-64 xl:gap-x-96 place-content-center text-base"
   >
     <nav>
-      <span class="footer-title opacity-80">Explore</span>
-      <a class="link link-hover mb-1" href="/">Overview</a>
-      <a class="link link-hover my-1" href="/pricing">Pricing</a>
+      <span class="footer-title opacity-80">Explorar</span>
+      <a class="link link-hover mb-1" href="/">Visión General</a>
+      <a class="link link-hover my-1" href="/pricing">Precios</a>
       <a class="link link-hover my-1" href="/blog">Blog</a>
-      <a class="link link-hover my-1" href="/contact_us">Contact Us</a>
+      <a class="link link-hover my-1" href="/contact_us">Contáctanos</a>
       <a
         class="link link-hover my-1"
         href="https://github.com/CriticalMoments/CMSaasStarter">Github</a
       >
     </nav>
     <aside>
-      <span class="footer-title opacity-80">Sponsor</span>
+      <span class="footer-title opacity-80">Patrocinador</span>
       <a class="max-w-[260px]" href="https://getkiln.ai">
         <div class="font-bold text-3xl mb-1">Kiln AI</div>
-        <div class="font-medium mb-3">Build High Quality AI Products</div>
+        <div class="font-medium mb-3">Crea Productos de IA de Alta Calidad</div>
         <div class="font-light">
-          Use advanced AI tactics, and collaborate with your team. Free apps for
-          Mac and Windows.
+          Usa tácticas avanzadas de IA y colabora con tu equipo. Apps gratuitas
+          para Mac y Windows.
         </div>
-        <div class="link text-sm font-bold mt-2">Learn More</div>
+        <div class="link text-sm font-bold mt-2">Más Información</div>
       </a>
     </aside>
   </footer>
 </div>
+{/if}

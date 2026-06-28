@@ -1,7 +1,8 @@
 import { _hasFullProfile } from "../+layout.js"
 import { redirect } from "@sveltejs/kit"
+import type { PageLoad } from "./$types"
 
-export async function load({ parent }) {
+export const load: PageLoad = async ({ parent }) => {
   const data = await parent()
 
   // They completed their profile! Redirect to "Select a Plan" screen.

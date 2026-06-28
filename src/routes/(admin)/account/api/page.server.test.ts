@@ -117,7 +117,7 @@ describe("toggleEmailSubscription", () => {
 
     // Check if fail was called with the correct arguments
     expect(fail).toHaveBeenCalledWith(500, {
-      message: "Failed to update subscription status",
+      message: "Error al actualizar el estado de la suscripción",
     })
   })
 })

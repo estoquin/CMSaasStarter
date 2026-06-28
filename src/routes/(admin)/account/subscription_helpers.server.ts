@@ -55,7 +55,7 @@ export const getOrCreateCustomerId = async ({
   }
 
   if (!customer.id) {
-    return { error: "Unknown stripe user creation error" }
+    return { error: "Error desconocido al crear usuario en Stripe" }
   }
 
   // insert instead of upsert so we never over-write. PK ensures later attempts error.
@@ -109,7 +109,7 @@ export const fetchSubscription = async ({
     if (!appSubscription) {
       return {
         error:
-          "Stripe subscription does not have matching app subscription in pricing_plans.ts (via product id match)",
+          "La suscripción de Stripe no tiene una suscripción correspondiente en pricing_plans.ts",
       }
     }
   }

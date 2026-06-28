@@ -9,8 +9,9 @@ import {
 } from "@supabase/ssr"
 import { redirect } from "@sveltejs/kit"
 import { load_helper } from "$lib/load_helpers.js"
+import type { LayoutLoad } from "./$types"
 
-export const load = async ({ fetch, data, depends }) => {
+export const load: LayoutLoad = async ({ fetch, data, depends }) => {
   depends("supabase:auth")
 
   const supabase = isBrowser()

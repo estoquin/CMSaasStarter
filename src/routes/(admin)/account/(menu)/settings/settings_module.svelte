@@ -43,11 +43,11 @@
     message = "",
     fields,
     formTarget = "",
-    successTitle = "Success",
+    successTitle = "Éxito",
     successBody = "",
     editButtonTitle = null,
     editLink = null,
-    saveButtonTitle = "Save",
+    saveButtonTitle = "Guardar",
   }: Props = $props()
 
   const handleSubmit: SubmitFunction = () => {
@@ -63,9 +63,9 @@
   }
 </script>
 
-<div class="card p-6 pb-7 mt-8 max-w-xl flex flex-col md:flex-row shadow-sm">
+<div class="card p-5 pb-6 mt-0 max-w-xl flex flex-col md:flex-row border border-gray-300">
   {#if title}
-    <div class="text-xl font-bold mb-3 w-48 md:pr-8 flex-none">{title}</div>
+    <div class="text-sm font-bold mb-3 w-48 md:pr-8 flex-none">{title}</div>
   {/if}
 
   <div class="w-full min-w-48">
@@ -111,12 +111,12 @@
               placeholder={field.placeholder ?? field.label ?? ""}
               class="{fieldError($page?.form, field.id)
                 ? 'input-error'
-                : ''} input-sm mt-1 input input-bordered w-full max-w-xs mb-3 text-base py-4"
+                : ''} input-sm mt-1 input input-bordered w-full max-w-xs mb-2 text-sm"
               value={$page.form ? $page.form[field.id] : field.initialValue}
               maxlength={field.maxlength ? field.maxlength : null}
             />
           {:else}
-            <div class="text-lg mb-3">{field.initialValue}</div>
+            <div class="text-sm mb-2">{field.initialValue}</div>
           {/if}
         {/each}
 
@@ -165,7 +165,7 @@
       </div>
       <a href="/account/settings">
         <button class="btn btn-outline btn-sm mt-3 min-w-[145px]">
-          Return to Settings
+          Volver a Configuración
         </button>
       </a>
     {/if}

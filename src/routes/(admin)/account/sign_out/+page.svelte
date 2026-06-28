@@ -5,13 +5,13 @@
   let { data } = $props()
 
   let supabase = $derived(data.supabase)
-  let message = $state("Signing out....")
+  let message = $state("Cerrando sesión...")
 
   // on mount, sign out
   onMount(() => {
     supabase.auth.signOut().then(({ error }) => {
       if (error) {
-        message = "There was an issue signing out."
+        message = "Hubo un problema al cerrar sesión."
       } else {
         goto("/")
       }

@@ -1,43 +1,54 @@
 export const defaultPlanId = "free"
 
-export const pricingPlans = [
+export type PricingPlan = {
+  id: string
+  name: string
+  description: string
+  price: string
+  priceIntervalName: string
+  stripe_price_id: string | null
+  stripe_product_id?: string
+  features: string[]
+}
+
+export const pricingPlans: PricingPlan[] = [
   {
     id: "free",
     name: "Free",
-    description: "A free plan to get you started!",
+    description: "¡Un plan gratuito para empezar!",
     price: "$0",
-    priceIntervalName: "per month",
+    priceIntervalName: "por mes",
     stripe_price_id: null,
-    features: ["MIT Licence", "Fast Performance", "Stripe Integration"],
+    features: ["Licencia MIT", "Rendimiento Rápido", "Integración con Stripe"],
   },
   {
     id: "pro",
     name: "Pro",
     description:
-      "A plan to test the purchase experience. Try buying this with the test credit card 4242424242424242.",
+      "Un plan para probar la experiencia de compra. Intenta comprarlo con la tarjeta de prueba 4242424242424242.",
     price: "$5",
-    priceIntervalName: "per month",
+    priceIntervalName: "por mes",
     stripe_price_id: "price_1NkdZCHMjzZ8mGZnRSjUm4yA",
     stripe_product_id: "prod_OXj1CcemGMWOlU",
     features: [
-      "Everything in Free",
-      "Support us with fake money",
-      "Test the purchase experience",
+      "Todo lo de Gratuito",
+      "Apóyanos con dinero ficticio",
+      "Prueba la experiencia de compra",
     ],
   },
   {
     id: "enterprise",
     name: "Enterprise",
     description:
-      "A plan to test the upgrade experience. Try buying this with the test credit card 4242424242424242.",
+      "Un plan para probar la experiencia de actualización. Intenta comprarlo con la tarjeta de prueba 4242424242424242.",
     price: "$15",
-    priceIntervalName: "per month",
+    priceIntervalName: "por mes",
     stripe_price_id: "price_1Nkda2HMjzZ8mGZn4sKvbDAV",
     stripe_product_id: "prod_OXj20YNpHYOXi7",
     features: [
-      "Everything in Pro",
-      "Try the 'upgrade plan' UX",
-      "Still actually free!",
+      "Todo lo de Pro",
+      "Prueba la UX de 'actualizar plan'",
+      "¡Sigue siendo gratis!",
     ],
   },
 ]

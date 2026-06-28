@@ -13,35 +13,35 @@
 
   const planFeatures: PlanFeatureRow[] = [
     {
-      name: "Section 1",
+      name: "Sección 1",
       header: true,
     },
     {
-      name: "Feature 1",
+      name: "Característica 1",
       freeIncluded: true,
       proIncluded: true,
     },
     {
-      name: "Feature 2",
+      name: "Característica 2",
       freeIncluded: false,
       proIncluded: true,
     },
     {
-      name: "Feature 3",
+      name: "Característica 3",
       freeString: "3",
-      proString: "Unlimited",
+      proString: "Ilimitado",
     },
     {
-      name: "Section 2",
+      name: "Sección 2",
       header: true,
     },
     {
-      name: "Feature 4",
+      name: "Característica 4",
       freeIncluded: true,
       proIncluded: true,
     },
     {
-      name: "Feature 5",
+      name: "Característica 5",
       freeIncluded: false,
       proIncluded: true,
     },
@@ -49,66 +49,66 @@
 </script>
 
 <svelte:head>
-  <title>Pricing</title>
-  <meta name="description" content="Pricing - {WebsiteName}" />
+  <title>Precios</title>
+  <meta name="description" content="Precios - {WebsiteName}" />
 </svelte:head>
 
 <div class="min-h-[70vh] pb-8 pt-[5vh] px-4">
-  <h1 class="text-3xl font-bold text-center">Pricing</h1>
+  <h1 class="text-3xl font-bold text-center">Precios</h1>
   <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-    Totally free, scale to millions of users
+    Completamente gratis, escala a millones de usuarios
   </h2>
 
   <div class="w-full my-8">
-    <PricingModule callToAction="Get Started" highlightedPlanId="pro" />
-    <h1 class="text-2xl font-bold text-center mt-24">Pricing FAQ</h1>
+    <PricingModule callToAction="Comenzar" highlightedPlanId="pro" />
+    <h1 class="text-2xl font-bold text-center mt-24">Preguntas Frecuentes</h1>
     <div class="flex place-content-center">
       <div class="join join-vertical max-w-xl py-6 mx-auto">
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            Is this template free to use?
+            ¿Esta plantilla es gratuita?
           </div>
           <div class="collapse-content">
-            <p>Yup! This template is free to use for any project.</p>
+            <p>¡Sí! Esta plantilla es gratuita para cualquier proyecto.</p>
           </div>
         </div>
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            Why does a free template have a pricing page?
+            ¿Por qué una plantilla gratuita tiene una página de precios?
           </div>
           <div class="collapse-content">
             <p>
-              The pricing page is part of the boilerplate. It shows how the
-              pricing page integrates into the billing portal and the Stripe
-              Checkout flows.
+              La página de precios es parte de la plantilla base. Muestra cómo la
+              página de precios se integra con el portal de facturación y los
+              flujos de Stripe Checkout.
             </p>
           </div>
         </div>
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            What license is the template under?
+            ¿Bajo qué licencia está la plantilla?
           </div>
           <div class="collapse-content">
-            <p>The template is under the MIT license.</p>
+            <p>La plantilla está bajo la licencia MIT.</p>
           </div>
         </div>
         <div class="collapse collapse-arrow join-item border border-primary">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-medium">
-            Can I try out purchase flows without real a credit card?
+            ¿Puedo probar los flujos de compra sin una tarjeta de crédito real?
           </div>
           <div class="collapse-content">
             <p>
-              Our demo page <a href="https://saasstarter.work" class="link"
+              Nuestra página demo <a href="https://saasstarter.work" class="link"
                 >SaasStarter.work</a
-              > has a functional demo page, using Stripe's test environment.
+              > tiene una página demo funcional, usando el entorno de prueba de Stripe.
             </p>
             <p class="mt-4">
-              You can use the credit card number 4242 4242 4242 4242 with any
-              future expiry date to test the payment and upgrade flows.
+              Puedes usar el número de tarjeta 4242 4242 4242 4242 con cualquier
+              fecha de vencimiento futura para probar los flujos de pago y mejora.
             </p>
           </div>
         </div>
@@ -142,9 +142,9 @@
       </defs>
     </svg>
 
-    <h1 class="text-2xl font-bold text-center mt-16">Plan Features</h1>
+    <h1 class="text-2xl font-bold text-center mt-16">Características del Plan</h1>
     <h2 class="text-xl text-center text-slate-500 mt-1 pb-3">
-      Example feature table
+      Tabla de ejemplo de características
     </h2>
 
     <div class="overflow-visible mx-auto max-w-xl mt-4">
@@ -154,7 +154,7 @@
         >
           <tr>
             <th></th>
-            <th class="text-center">Free</th>
+            <th class="text-center">Gratis</th>
             <th class="text-center">Pro</th>
           </tr>
         </thead>

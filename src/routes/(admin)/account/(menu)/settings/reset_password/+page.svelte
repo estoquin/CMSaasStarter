@@ -8,28 +8,28 @@
 </script>
 
 <svelte:head>
-  <title>Reset Password</title>
+  <title>Restablecer Contraseña</title>
 </svelte:head>
 
-<h1 class="text-2xl font-bold mb-6">Settings</h1>
+<h1 class="text-2xl font-bold mb-6">Configuración</h1>
 
 <SettingsModule
-  title="Reset Password"
+  title="Restablecer Contraseña"
   editable={true}
-  saveButtonTitle="Reset Password"
-  successTitle="Password Changed"
-  successBody="On next sign in, use your new password."
+  saveButtonTitle="Restablecer Contraseña"
+  successTitle="Contraseña Cambiada"
+  successBody="En el próximo inicio de sesión, usa tu nueva contraseña."
   formTarget="/account/api?/updatePassword"
   fields={[
     {
       id: "newPassword1",
-      label: "New Password",
+        label: "Nueva Contraseña",
       initialValue: "",
       inputType: "password",
     },
     {
       id: "newPassword2",
-      label: "Confirm New Password",
+        label: "Confirmar Nueva Contraseña",
       initialValue: "",
       inputType: "password",
     },

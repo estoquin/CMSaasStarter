@@ -12,9 +12,13 @@ declare global {
         session: Session | null
         user: User | null
         amr: AMREntry[] | null
+        organization_id: string | null
+        role: string | null
       }>
       session: Session | null
       user: User | null
+      organization_id: string | null
+      role: string | null
     }
     interface PageData {
       session: Session | null

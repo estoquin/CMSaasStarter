@@ -24,9 +24,9 @@
 >
   {#each pricingPlans as plan}
     <div
-      class="flex-none card card-bordered {plan.id === highlightedPlanId
+      class="flex-none card {plan.id === highlightedPlanId
         ? 'border-primary'
-        : 'border-gray-200'} shadow-xl flex-1 grow min-w-[260px] max-w-[310px] p-6"
+        : 'border-gray-300'} flex-1 grow min-w-[260px] max-w-[310px] p-6 border"
     >
       <div class="flex flex-col h-full">
         <div class="text-xl font-bold">{plan.name}</div>
@@ -34,7 +34,7 @@
           {plan.description}
         </p>
         <div class="mt-auto pt-4 text-sm text-gray-600">
-          Plan Includes:
+          El plan incluye:
           <ul class="list-disc list-inside mt-2 space-y-1">
             {#each plan.features as feature}
               <li class="">{feature}</li>
@@ -50,7 +50,7 @@
               <div
                 class="btn btn-outline btn-success no-animation w-[80%] mx-auto cursor-default"
               >
-                Current Plan
+                Plan Actual
               </div>
             {:else}
               <a

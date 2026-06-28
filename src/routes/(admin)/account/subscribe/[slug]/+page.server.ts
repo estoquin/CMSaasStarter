@@ -30,7 +30,7 @@ export const load: PageServerLoad = async ({
   if (idError || !customerId) {
     console.error("Error creating customer id", idError)
     error(500, {
-      message: "Unknown error. If issue persists, please contact us.",
+      message: "Error desconocido. Si el problema persiste, contáctanos.",
     })
   }
 
@@ -59,7 +59,7 @@ export const load: PageServerLoad = async ({
     checkoutUrl = stripeSession.url
   } catch (e) {
     console.error("Error creating checkout session", e)
-    error(500, "Unknown Error (SSE): If issue persists please contact us.")
+    error(500, "Error desconocido (SSE): Si el problema persiste, contáctanos.")
   }
 
   redirect(303, checkoutUrl ?? "/pricing")

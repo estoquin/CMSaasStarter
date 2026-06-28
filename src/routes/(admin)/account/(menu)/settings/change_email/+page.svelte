@@ -12,23 +12,23 @@
 </script>
 
 <svelte:head>
-  <title>Change Email</title>
+  <title>Cambiar Correo Electrónico</title>
 </svelte:head>
 
-<h1 class="text-2xl font-bold mb-6">Settings</h1>
+<h1 class="text-2xl font-bold mb-6">Configuración</h1>
 
 <SettingsModule
-  title="Change Email"
+  title="Cambiar Correo Electrónico"
   editable={true}
-  successTitle="Email change initiated"
-  successBody="You should receive emails at both the old and new address to confirm the change. Please click the link in both emails to finalized the change. Until finalized, you must sign in with your current email."
+  successTitle="Cambio de correo iniciado"
+  successBody="Deberías recibir correos tanto en la dirección anterior como en la nueva para confirmar el cambio. Haz clic en el enlace de ambos correos para finalizar el cambio. Hasta que se finalice, debes iniciar sesión con tu correo actual."
   formTarget="/account/api?/updateEmail"
   fields={[
     {
       id: "email",
-      label: "Email",
+      label: "Correo Electrónico",
       initialValue: user?.email ?? "",
-      placeholder: "Email address",
+      placeholder: "Dirección de correo electrónico",
     },
   ]}
 />

@@ -8,8 +8,9 @@ const encodeXML = (str: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;")
 
-/** @type {import('./$types').RequestHandler} */
-export function GET({ url }) {
+import type { RequestHandler } from "./$types"
+
+export const GET: RequestHandler = ({ url }) => {
   const headers = {
     "Cache-Control": "max-age=0, s-maxage=3600",
     "Content-Type": "application/xml",

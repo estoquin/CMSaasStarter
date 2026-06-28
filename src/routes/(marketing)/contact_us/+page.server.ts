@@ -1,50 +1,50 @@
 import { fail } from "@sveltejs/kit"
 import { sendAdminEmail } from "$lib/mailer.js"
+import type { Actions } from "./$types"
 
-/** @type {import('./$types').Actions} */
-export const actions = {
+export const actions: Actions = {
   submitContactUs: async ({ request, locals: { supabaseServiceRole } }) => {
     const formData = await request.formData()
     const errors: { [fieldName: string]: string } = {}
 
     const firstName = formData.get("first_name")?.toString() ?? ""
     if (firstName.length < 2) {
-      errors["first_name"] = "First name is required"
+      errors["first_name"] = "El nombre es obligatorio"
     }
     if (firstName.length > 500) {
-      errors["first_name"] = "First name too long"
+      errors["first_name"] = "El nombre es demasiado largo"
     }
 
     const lastName = formData.get("last_name")?.toString() ?? ""
     if (lastName.length < 2) {
-      errors["last_name"] = "Last name is required"
+      errors["last_name"] = "El apellido es obligatorio"
     }
     if (lastName.length > 500) {
-      errors["last_name"] = "Last name too long"
+      errors["last_name"] = "El apellido es demasiado largo"
     }
 
     const email = formData.get("email")?.toString() ?? ""
     if (email.length < 6) {
-      errors["email"] = "Email is required"
+      errors["email"] = "El correo electrónico es obligatorio"
     } else if (email.length > 500) {
-      errors["email"] = "Email too long"
+      errors["email"] = "El correo es demasiado largo"
     } else if (!email.includes("@") || !email.includes(".")) {
-      errors["email"] = "Invalid email"
+      errors["email"] = "Correo electrónico inválido"
     }
 
     const company = formData.get("company")?.toString() ?? ""
     if (company.length > 500) {
-      errors["company"] = "Company too long"
+      errors["company"] = "La empresa es demasiado larga"
     }
 
     const phone = formData.get("phone")?.toString() ?? ""
     if (phone.length > 100) {
-      errors["phone"] = "Phone number too long"
+      errors["phone"] = "El teléfono es demasiado largo"
     }
 
     const message = formData.get("message")?.toString() ?? ""
     if (message.length > 2000) {
-      errors["message"] = "Message too long (" + message.length + " of 2000)"
+      errors["message"] = "Mensaje demasiado largo (" + message.length + " de 2000)"
     }
 
     if (Object.keys(errors).length > 0) {
@@ -66,13 +66,13 @@ export const actions = {
 
     if (insertError) {
       console.error("Error saving contact request", insertError)
-      return fail(500, { errors: { _: "Error saving" } })
+      return fail(500, { errors: { _: "Error al guardar" } })
     }
 
     // Send email to admin
     await sendAdminEmail({
-      subject: "New contact request",
-      body: `New contact request from ${firstName} ${lastName}.\n\nEmail: ${email}\n\nPhone: ${phone}\n\nCompany: ${company}\n\nMessage: ${message}`,
+      subject: "Nueva solicitud de contacto",
+      body: `Nueva solicitud de contacto de ${firstName} ${lastName}.\n\nCorreo: ${email}\n\nTeléfono: ${phone}\n\nEmpresa: ${company}\n\nMensaje: ${message}`,
     })
   },
 }

@@ -6,21 +6,21 @@
 </script>
 
 <svelte:head>
-  <title>Change Email Subscription</title>
+  <title>Cambiar Suscripción de Correo</title>
 </svelte:head>
 
-<h1 class="text-2xl font-bold mb-6">Email Subscription</h1>
+<h1 class="text-2xl font-bold mb-6">Suscripción de Correo</h1>
 
 <SettingsModule
   editable={true}
-  title="Subscription"
+  title="Suscripción"
   message={unsubscribed
-    ? "You are currently unsubscribed from emails"
-    : "You are currently subscribed to emails"}
-  saveButtonTitle={unsubscribed ? "Re-subscribe" : "Unsubscribe"}
+    ? "Actualmente no estás suscrito a los correos"
+    : "Actualmente estás suscrito a los correos"}
+  saveButtonTitle={unsubscribed ? "Re-suscribir" : "Cancelar Suscripción"}
   successBody={unsubscribed
-    ? "You have been re-subscribed to emails"
-    : "You have been unsubscribed from emails"}
+    ? "Has sido re-suscrito a los correos"
+    : "Has sido cancelado de la suscripción de correos"}
   formTarget="/account/api?/toggleEmailSubscription"
   fields={[]}
 />

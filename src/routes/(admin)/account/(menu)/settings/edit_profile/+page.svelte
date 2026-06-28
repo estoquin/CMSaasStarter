@@ -12,33 +12,33 @@
 </script>
 
 <svelte:head>
-  <title>Edit Profile</title>
+  <title>Editar Perfil</title>
 </svelte:head>
 
-<h1 class="text-2xl font-bold mb-6">Settings</h1>
+<h1 class="text-2xl font-bold mb-6">Configuración</h1>
 
 <SettingsModule
   editable={true}
-  title="Edit Profile"
-  successTitle="Saved Profile"
+  title="Editar Perfil"
+  successTitle="Perfil Guardado"
   formTarget="/account/api?/updateProfile"
   fields={[
     {
       id: "fullName",
-      label: "Name",
+      label: "Nombre",
       initialValue: profile?.full_name ?? "",
-      placeholder: "Your full name",
+      placeholder: "Tu nombre completo",
       maxlength: 50,
     },
     {
       id: "companyName",
-      label: "Company Name",
+      label: "Nombre de la Empresa",
       initialValue: profile?.company_name ?? "",
       maxlength: 50,
     },
     {
       id: "website",
-      label: "Company Website",
+      label: "Sitio Web",
       initialValue: profile?.website ?? "",
       maxlength: 50,
     },

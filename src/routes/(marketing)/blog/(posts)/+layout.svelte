@@ -18,7 +18,7 @@
       }
     }
     if (!searchPost) {
-      error(404, "Blog post not found")
+      error(404, "Entrada de blog no encontrada")
     }
     return searchPost
   }
@@ -67,7 +67,7 @@
 
 <article class="prose mx-auto py-12 px-6 font-sans">
   <div class="text-sm text-accent">
-    {currentPost.parsedDate?.toLocaleDateString("en-US", {
+    {currentPost.parsedDate?.toLocaleDateString("es-ES", {
       month: "short",
       day: "numeric",
       year: "numeric",

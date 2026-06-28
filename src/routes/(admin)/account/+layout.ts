@@ -11,8 +11,9 @@ import { redirect } from "@sveltejs/kit"
 import type { Database } from "../../../DatabaseDefinitions.js"
 import { CreateProfileStep } from "../../../config"
 import { load_helper } from "$lib/load_helpers"
+import type { LayoutLoad } from "./$types"
 
-export const load = async ({ fetch, data, depends, url }) => {
+export const load: LayoutLoad = async ({ fetch, data, depends, url }) => {
   depends("supabase:auth")
 
   const supabase = isBrowser()

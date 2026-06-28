@@ -54,6 +54,7 @@
     "@supabase/supabase-js": "^2.45.2",
     "handlebars": "^4.7.8",
     "resend": "^3.5.0",
+    "sharp": "^0.35.1",
     "stripe": "^13.3.0"
   },
   "overrides": {

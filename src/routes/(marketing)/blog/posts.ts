@@ -1,6 +1,6 @@
 export const blogInfo = {
-  name: "SaaS Starter Blog",
-  description: "A sample blog",
+  name: "Blog de SaaS Starter",
+  description: "Un blog de muestra",
 }
 
 export type BlogPost = {
@@ -15,20 +15,20 @@ export type BlogPost = {
 // Create a page in the "(posts)" directory for each entry
 const blogPosts: BlogPost[] = [
   {
-    title: "How we built a beautiful 41kb SaaS website with this template",
-    description: "How to use this template you to bootstrap your own site.",
+    title: "Cómo construimos un hermoso sitio SaaS de 41kb con esta plantilla",
+    description: "Cómo usar esta plantilla para impulsar tu propio sitio.",
     link: "/blog/how_we_built_our_41kb_saas_website",
     date: "2024-03-10",
   },
   {
-    title: "Example Blog Post 2",
-    description: "Even more example content!",
+    title: "Entrada de Blog de Ejemplo 2",
+    description: "¡Aún más contenido de ejemplo!",
     link: "/blog/awesome_post",
     date: "2022-9-23",
   },
   {
-    title: "Example Blog Post",
-    description: "A sample blog post, showing our blog engine",
+    title: "Entrada de Blog de Ejemplo",
+    description: "Una entrada de blog de muestra que muestra nuestro motor de blog",
     link: "/blog/example_blog_post",
     date: "2023-03-13",
   },

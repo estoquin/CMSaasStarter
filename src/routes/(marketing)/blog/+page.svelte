@@ -4,7 +4,7 @@
 
 <svelte:head>
   <title>{blogInfo.name}</title>
-  <meta name="description" content="Our blog posts." />
+  <meta name="description" content="Nuestros artículos del blog." />
 </svelte:head>
 
 <div class="py-8 lg:py-12 px-6 max-w-lg mx-auto">
@@ -20,11 +20,11 @@
       <img
         class="flex-none w-5 h-5 object-contain"
         src="/images/rss.svg"
-        alt="rss feed"
+        alt="Sindicación RSS"
       />
     </a>
   </div>
-  <div class="text-lg text-center">A demo blog with sample content.</div>
+  <div class="text-lg text-center">Un blog demo con contenido de muestra.</div>
 
   {#each sortedBlogPosts as post}
     <a href={post.link}>
@@ -33,7 +33,7 @@
         <div class="py-6 px-6">
           <div class="text-xl">{post.title}</div>
           <div class="text-sm text-accent">
-            {post.parsedDate?.toLocaleDateString("en-US", {
+            {post.parsedDate?.toLocaleDateString("es-ES", {
               month: "short",
               day: "numeric",
               year: "numeric",

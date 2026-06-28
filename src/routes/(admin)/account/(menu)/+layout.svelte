@@ -2,12 +2,15 @@
   import "../../../../app.css"
   import { writable } from "svelte/store"
   import { setContext } from "svelte"
-  import { WebsiteName } from "../../../../config"
+  import { page } from "$app/stores"
+  import { appVisibility } from "$lib/stores/appVisibility"
+  import { habitsRoute } from "$lib/habits"
   interface Props {
     children?: import("svelte").Snippet
   }
 
   let { children }: Props = $props()
+  let orgName = $derived($page.data.profile?.company_name?.trim() || "")
 
   const adminSectionStore = writable("")
   setContext("adminSection", adminSectionStore)
@@ -27,9 +30,10 @@
 <div class="drawer lg:drawer-open">
   <input id="admin-drawer" type="checkbox" class="drawer-toggle" />
   <div class="drawer-content">
-    <div class="navbar bg-base-100 lg:hidden">
+    <div class="navbar bg-base-100 lg:hidden px-6">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl" href="/">{WebsiteName}</a>
+        <a class="btn btn-ghost normal-case text-xl" href="/">{orgName || "SaaS Starter"}</a>
+
       </div>
       <div class="flex-none">
         <div class="dropdown dropdown-end">
@@ -51,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="container px-6 lg:px-12 py-3 lg:py-6">
+    <div class="px-6 lg:px-12 py-3 lg:py-6">
       {@render children?.()}
     </div>
   </div>
@@ -59,13 +63,14 @@
   <div class="drawer-side">
     <label for="admin-drawer" class="drawer-overlay"></label>
     <ul
-      class="menu menu-lg p-4 w-80 min-h-full bg-base-100 lg:border-r text-primary"
+      class="menu menu-sm p-4 w-56 min-h-full bg-base-100 lg:border-r-2 lg:border-base-content/15"
     >
       <li>
         <div
           class="normal-case menu-title text-xl font-bold text-primary flex flex-row"
         >
-          <a href="/" class="grow">{WebsiteName}</a>
+          <a href="/" class="grow">{orgName || "SaaS Starter"}</a>
+
           <label for="admin-drawer" class="lg:hidden ml-3"> &#x2715; </label>
         </div>
       </li>
@@ -77,7 +82,7 @@
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            class="h-5 w-5 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -88,35 +93,101 @@
               d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
             /></svg
           >
-          Home
+          Inicio
         </a>
       </li>
+      {#if $appVisibility.crm}
       <li>
-        <a
-          href="/account/billing"
-          class={adminSection === "billing" ? "active" : ""}
-          onclick={closeDrawer}
-        >
-          <svg
-            class="h-5 w-5"
-            viewBox="0 0 24 24"
-            stroke="none"
-            fill="currentColor"
-          >
-            <path
-              d="M18,1H6A3,3,0,0,0,3,4V22a1,1,0,0,0,1.8.6L6.829,19.9l1.276,2.552a1,1,0,0,0,.8.549.981.981,0,0,0,.89-.4L12,19.667,14.2,22.6a.983.983,0,0,0,.89.4,1,1,0,0,0,.8-.549L17.171,19.9,19.2,22.6a1,1,0,0,0,.8.4,1,1,0,0,0,1-1V4A3,3,0,0,0,18,1Zm1,18-1.2-1.6a.983.983,0,0,0-.89-.4,1,1,0,0,0-.8.549l-1.276,2.552L12.8,17.4a1,1,0,0,0-1.6,0L9.171,20.105,7.9,17.553A1,1,0,0,0,7.09,17a.987.987,0,0,0-.89.4L5,19V4A1,1,0,0,1,6,3H18a1,1,0,0,1,1,1ZM17,9a1,1,0,0,1-1,1H8A1,1,0,0,1,8,8h8A1,1,0,0,1,17,9Zm-4,4a1,1,0,0,1-1,1H8a1,1,0,0,1,0-2h4A1,1,0,0,1,13,13Z"
-            />
-          </svg>
-          Billing
-        </a>
+        <details open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+            CRM
+          </summary>
+
+          <ul>
+            <li><a href="/account/crm" class={adminSection === "crm" ? "active" : ""} onclick={closeDrawer}>Contactos</a></li>
+            <li><a href="/account/accounts" class={adminSection === "accounts" ? "active" : ""} onclick={closeDrawer}>Cuentas</a></li>
+            <li><a href="/account/leads" class={adminSection === "leads" ? "active" : ""} onclick={closeDrawer}>Prospectos</a></li>
+            <li><a href="/account/opportunities" class={adminSection === "opportunities" ? "active" : ""} onclick={closeDrawer}>Oportunidades</a></li>
+            <li><a href="/account/quotes" class={adminSection === "quotes" ? "active" : ""} onclick={closeDrawer}>Cotizaciones</a></li>
+            <li><a href="/account/orders" class={adminSection === "orders" ? "active" : ""} onclick={closeDrawer}>Pedidos</a></li>
+          </ul>
+        </details>
       </li>
+      {/if}
+      {#if $appVisibility.erp}
+      <li>
+        <details open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+            ERP
+          </summary>
+
+          <ul>
+            <li><a href="/account/crm" class={adminSection === "erp" ? "active" : ""} onclick={closeDrawer}>Productos</a></li>
+            <li><a href="/account/crm" class={adminSection === "erp" ? "active" : ""} onclick={closeDrawer}>Depósitos</a></li>
+          </ul>
+        </details>
+      </li>
+      {/if}
+      {#if $appVisibility.service}
+      <li>
+        <details open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+            Servicio
+          </summary>
+
+          <ul>
+            <li><a href="/account/service" class={adminSection === "service" ? "active" : ""} onclick={closeDrawer}>Tickets</a></li>
+            <li><a href="/account/service/contracts" class={adminSection === "service-contracts" ? "active" : ""} onclick={closeDrawer}>Contratos</a></li>
+            <li><a href="/account/service/team" class={adminSection === "service-team" ? "active" : ""} onclick={closeDrawer}>Equipo</a></li>
+          </ul>
+        </details>
+      </li>
+      {/if}
+      {#if $appVisibility.costCalculator}
+      <li>
+        <details open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+            Calculadora de Costos
+          </summary>
+
+          <ul>
+            <li><a href="/account/cost-calculator" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Panel Principal</a></li>
+            <li><a href="/account/cost-calculator/ingredients" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Ingredientes</a></li>
+            <li><a href="/account/cost-calculator/components" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Componentes</a></li>
+            <li><a href="/account/cost-calculator/purchases" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Compras</a></li>
+            <li><a href="/account/cost-calculator/menu-items" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Productos del Menú</a></li>
+            <li><a href="/account/cost-calculator/porciones" class={adminSection === "cost-calculator" ? "active" : ""} onclick={closeDrawer}>Porciones</a></li>
+          </ul>
+        </details>
+      </li>
+      {/if}
+      {#if $appVisibility.habits}
+      <li>
+        <details open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+            Hábitos
+          </summary>
+          <ul>
+            <li><a href={habitsRoute.root} class={adminSection === "habits" ? "active" : ""} onclick={closeDrawer}>Check-in Diario</a></li>
+            <li><a href={habitsRoute.bundles} class={adminSection === "habits" ? "active" : ""} onclick={closeDrawer}>Bundles</a></li>
+            <li><a href={habitsRoute.catalog} class={adminSection === "habits" ? "active" : ""} onclick={closeDrawer}>Catálogo</a></li>
+          </ul>
+        </details>
+      </li>
+      {/if}
+
       <li>
         <a
           href="/account/settings"
           class={adminSection === "settings" ? "active" : ""}
           onclick={closeDrawer}
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" stroke="none" fill="none">
+          <svg class="h-5 w-5 text-primary" viewBox="0 0 24 24" stroke="none" fill="none">
             <g id="Interface / Settings">
               <g id="Vector">
                 <path
@@ -136,12 +207,18 @@
               </g>
             </g>
           </svg>
-          Settings
+          Configuración
         </a>
       </li>
 
+      <li>
+        <a href="/account/super-admin" class={adminSection === "super-admin" ? "active" : ""} onclick={closeDrawer}>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          Super Admin
+        </a>
+      </li>
       <li class="mt-auto">
-        <a href="/account/sign_out" class="mt-auto text-base">Sign Out</a>
+        <a href="/account/sign_out" class="border border-base-300">Cerrar Sesión</a>
       </li>
     </ul>
   </div>

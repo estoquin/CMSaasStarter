@@ -1,26 +1,26 @@
-<p class="lead">A sample post</p>
+<p class="lead">Una publicación de ejemplo</p>
 
 <p>
-  This is a sample blog post to demonstrate the blog engine. It shows some of
-  the formatting options included in the template.
+  Esta es una entrada de blog de muestra para demostrar el motor del blog.
+  Muestra algunas de las opciones de formato incluidas en la plantilla.
 </p>
 
-<h3>Section Titles are great</h3>
+<h3>Los Títulos de Sección son geniales</h3>
 
-<p>As are more paragraphs.</p>
+<p>Al igual que más párrafos.</p>
 
 <blockquote>
-  <p>Block quotes are styled</p>
+  <p>Las citas en bloque tienen estilo</p>
 </blockquote>
 
 <pre><code class="language-bash"
-    ># Code blocks work too!
+    ># ¡Los bloques de código también funcionan!
 npm install 
 </code></pre>
 
 <p>
-  Check out more formatting options like lists, headers, and more in <a
+  Revisa más opciones de formato como listas, encabezados y más en <a
     href="https://play.tailwindcss.com/uj1vGACRJA?layout=preview"
-    >the tailwind/typograpy docs</a
+    >la documentación de tailwind/typography</a
   >.
 </p>

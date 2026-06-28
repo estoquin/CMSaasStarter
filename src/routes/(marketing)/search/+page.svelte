@@ -87,8 +87,8 @@
 <svelte:window onkeydown={onKeyDown} />
 
 <svelte:head>
-  <title>Search</title>
-  <meta name="description" content="Search our website." />
+  <title>Buscar</title>
+  <meta name="description" content="Busca en nuestro sitio web." />
 </svelte:head>
 
 <div class="py-8 lg:py-12 px-6 max-w-lg mx-auto">
@@ -98,7 +98,7 @@
     <div
       class="text-center leading-relaxed font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent"
     >
-      Search
+      Buscar
     </div>
   </div>
   <label class="input input-bordered flex items-center gap-2 mt-10 mb-5 w-full">
@@ -106,29 +106,29 @@
       id="search-input"
       type="text"
       class="grow w-full"
-      placeholder="Search"
+      placeholder="Buscar"
       bind:value={searchQuery}
       onfocus={() => (focusItem = 0)}
-      aria-label="Search input"
+      aria-label="Campo de búsqueda"
     />
   </label>
 
   {#if loading && searchQuery.length > 0}
-    <div class="text-center mt-10 text-accent text-xl">Loading...</div>
+    <div class="text-center mt-10 text-accent text-xl">Cargando...</div>
   {/if}
 
   {#if error}
     <div class="text-center mt-10 text-accent text-xl">
-      Error connecting to search. Please try again later.
+      Error al conectar con la búsqueda. Por favor inténtalo de nuevo más tarde.
     </div>
   {/if}
 
   {#if !loading && searchQuery.length > 0 && results.length === 0 && !error}
-    <div class="text-center mt-10 text-accent text-xl">No results found</div>
+    <div class="text-center mt-10 text-accent text-xl">Sin resultados</div>
     {#if dev}
       <div class="text-center mt-4 font-mono">
-        Development mode only message: if you're missing content, rebuild your
-        local search index with `npm run build`
+        Mensaje solo en modo desarrollo: si falta contenido, reconstruye tu
+        índice de búsqueda local con `npm run build`
       </div>
     {/if}
   {/if}

@@ -1,36 +1,36 @@
-<p class="lead">How to use this template you to bootstrap your own site.</p>
+<p class="lead">Cómo usar esta plantilla para impulsar tu propio sitio.</p>
 
 <p>
-  We've written a detailed blog post about how we took this template, and
-  created a real <a href="https://criticalmoments.io" target="_blank"
-    >SaaS company website</a
-  >. Topics include:
+  Hemos escrito una publicación detallada sobre cómo tomamos esta plantilla y
+  creamos un <a href="https://criticalmoments.io" target="_blank"
+    >sitio web de SaaS real</a
+  >. Los temas incluyen:
 </p>
 
 <ul>
-  <li>Optimizing the stack for performance and developer productivity</li>
-  <li>Creating rich interactive animations with Svelte</li>
-  <li>Creating pixel perfect designs without rasterization</li>
-  <li>Speed measurements: how we kept it small and lightning fast</li>
+  <li>Optimizando el stack para rendimiento y productividad del desarrollador</li>
+  <li>Creando animaciones interactivas ricas con Svelte</li>
+  <li>Creando diseños perfectos en píxeles sin rasterización</li>
+  <li>Mediciones de velocidad: cómo lo mantuvimos pequeño y ultrarrápido</li>
 </ul>
 
 <a
   href="https://criticalmoments.io/blog/how_we_built_our_marketing_page"
   target="_blank"
 >
-  <button class="btn btn-primary">Read the Blog Post</button>
+  <button class="btn btn-primary">Leer la Entrada del Blog</button>
 </a>
 
 <p>
-  The blog post is over on <a href="https://criticalmoments.io" target="_blank"
+  La entrada del blog está en <a href="https://criticalmoments.io" target="_blank"
     >criticalmoments.io</a
-  >, a page which uses this boilerplate as a starting point.
+  >, una página que usa esta plantilla como punto de partida.
 </p>
 
 <p>
-  If you are looking for examples of blog posts with rich content rendered
-  inside this template, checkout the other demo posts <a
+  Si buscas ejemplos de entradas de blog con contenido enriquecido renderizado
+  dentro de esta plantilla, mira las otras publicaciones de demostración <a
     href="/blog"
-    class="link">here</a
+    class="link">aquí</a
   >.
 </p>

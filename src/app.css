@@ -8,22 +8,22 @@
 
 @plugin "daisyui/theme" {
   name: "saasstartertheme";
-  default: true; /* set as default */
-  prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
-  color-scheme: light; /* color of browser-provided UI */
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
 
-  --color-primary: #180042;
+  --color-primary: #166534;
   --color-primary-content: #fefbf6;
-  --color-secondary: #c7b9f8;
-  --color-secondary-content: oklch(95% 0 0);
-  --color-accent: #db2777;
-  --color-accent-content: #180042;
-  --color-neutral: #180042;
+  --color-secondary: #86efac;
+  --color-secondary-content: #052e16;
+  --color-accent: #059669;
+  --color-accent-content: #fefbf6;
+  --color-neutral: #166534;
   --color-neutral-content: #fefbf6;
   --color-base-100: #fefbf6;
-  --color-base-200: #faedd6;
-  --color-base-300: oklch(92% 0.04 240);
-  --color-base-content: #180042;
+  --color-base-200: #dcfce7;
+  --color-base-300: #bbf7d0;
+  --color-base-content: #1f2937;
   --color-info: oklch(70% 0.2 220);
   --color-info-content: oklch(98% 0.01 220);
   --color-success: #37d399;
@@ -33,20 +33,272 @@
   --color-error: #f77272;
   --color-error-content: oklch(98% 0.01 30);
 
-  /* border radius */
-  --radius-selector: 1rem;
-  --radius-field: 0.5rem;
-  --radius-box: 0.5rem;
-
-  /* base sizes */
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
-
-  /* border size */
   --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
 
-  /* effects */
-  --depth: 1;
+@plugin "daisyui/theme" {
+  name: "saasstarterdark";
+  default: false;
+  prefersdark: false;
+  color-scheme: dark;
+
+  --color-primary: #4ade80;
+  --color-primary-content: #052e16;
+  --color-secondary: #166534;
+  --color-secondary-content: #fefbf6;
+  --color-accent: #22c55e;
+  --color-accent-content: #052e16;
+  --color-neutral: #4ade80;
+  --color-neutral-content: #052e16;
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #e2e8f0;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstartertheme-blue";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #1e3a8a;
+  --color-primary-content: #fefbf6;
+  --color-secondary: #93c5fd;
+  --color-secondary-content: #1e3a8a;
+  --color-accent: #1d4ed8;
+  --color-accent-content: #fefbf6;
+  --color-neutral: #1e3a8a;
+  --color-neutral-content: #fefbf6;
+  --color-base-100: #fefbf6;
+  --color-base-200: #dbeafe;
+  --color-base-300: #bfdbfe;
+  --color-base-content: #1f2937;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstarterdark-blue";
+  default: false;
+  prefersdark: false;
+  color-scheme: dark;
+
+  --color-primary: #93c5fd;
+  --color-primary-content: #0f172a;
+  --color-secondary: #1e3a8a;
+  --color-secondary-content: #fefbf6;
+  --color-accent: #60a5fa;
+  --color-accent-content: #0f172a;
+  --color-neutral: #93c5fd;
+  --color-neutral-content: #0f172a;
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #e2e8f0;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstartertheme-red";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #b91c1c;
+  --color-primary-content: #fefbf6;
+  --color-secondary: #fca5a5;
+  --color-secondary-content: #7f1d1d;
+  --color-accent: #dc2626;
+  --color-accent-content: #fefbf6;
+  --color-neutral: #b91c1c;
+  --color-neutral-content: #fefbf6;
+  --color-base-100: #fefbf6;
+  --color-base-200: #fee2e2;
+  --color-base-300: #fecaca;
+  --color-base-content: #1f2937;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstarterdark-red";
+  default: false;
+  prefersdark: false;
+  color-scheme: dark;
+
+  --color-primary: #f87171;
+  --color-primary-content: #0f172a;
+  --color-secondary: #b91c1c;
+  --color-secondary-content: #fefbf6;
+  --color-accent: #ef4444;
+  --color-accent-content: #0f172a;
+  --color-neutral: #f87171;
+  --color-neutral-content: #0f172a;
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #e2e8f0;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstartertheme-orange";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-primary: #c2410c;
+  --color-primary-content: #fefbf6;
+  --color-secondary: #fdba74;
+  --color-secondary-content: #7c2d12;
+  --color-accent: #ea580c;
+  --color-accent-content: #fefbf6;
+  --color-neutral: #c2410c;
+  --color-neutral-content: #fefbf6;
+  --color-base-100: #fefbf6;
+  --color-base-200: #ffedd5;
+  --color-base-300: #fed7aa;
+  --color-base-content: #1f2937;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "saasstarterdark-orange";
+  default: false;
+  prefersdark: false;
+  color-scheme: dark;
+
+  --color-primary: #fb923c;
+  --color-primary-content: #0f172a;
+  --color-secondary: #c2410c;
+  --color-secondary-content: #fefbf6;
+  --color-accent: #f97316;
+  --color-accent-content: #0f172a;
+  --color-neutral: #fb923c;
+  --color-neutral-content: #0f172a;
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #e2e8f0;
+  --color-info: oklch(70% 0.2 220);
+  --color-info-content: oklch(98% 0.01 220);
+  --color-success: #37d399;
+  --color-success-content: oklch(98% 0.01 140);
+  --color-warning: oklch(80% 0.25 80);
+  --color-warning-content: oklch(20% 0.05 80);
+  --color-error: #f77272;
+  --color-error-content: oklch(98% 0.01 30);
+
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
   --noise: 0;
 }
 
@@ -71,6 +323,28 @@
 
 a {
   @apply cursor-pointer;
+}
+
+/* Dark theme: make border-gray-300 use the theme's base-300 color instead of fixed Tailwind gray */
+[data-theme^="saasstarterdark"] .border-gray-300 {
+  border-color: var(--color-base-300);
+}
+
+/* Dark theme: make gray text colors use theme-aware content color */
+[data-theme^="saasstarterdark"] .text-gray-400 {
+  color: color-mix(in oklch, var(--color-base-content) 60%, transparent);
+}
+[data-theme^="saasstarterdark"] .text-gray-500 {
+  color: color-mix(in oklch, var(--color-base-content) 75%, transparent);
+}
+[data-theme^="saasstarterdark"] .text-gray-600 {
+  color: color-mix(in oklch, var(--color-base-content) 90%, transparent);
+}
+
+/* Compact table rows */
+.table :where(th, td) {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 
 /* Hack to temporarily solve https://github.com/supabase/auth-ui/issues/219 */
